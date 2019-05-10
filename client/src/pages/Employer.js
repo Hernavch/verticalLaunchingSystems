@@ -9,7 +9,7 @@ import { List, ListItem } from "../components/List";
 import { Input, TextArea, FormBtn } from "../components/Form";
 
 
-class Books extends Component {
+class Employer extends Component {
   state = {
     books: [],
     title: "",
@@ -113,4 +113,4 @@ class Books extends Component {
   }
 }
 
-export default Books;
+export default Employer;
