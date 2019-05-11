@@ -20,9 +20,39 @@ class SignUp extends Component {
         <Row>
           <Col size="md-12">
             <Jumbotron>
-              <h1>
-                Sign Up :)
-              </h1>
+              <h1>Sign Up</h1>
+            <form>
+                <Input
+                  value={this.state.firstName}
+                  onChange={this.handleInputChange}
+                  name="firstName"
+                  placeholder="John"
+                />
+                <Input
+                  value={this.state.lastName}
+                  onChange={this.handleInputChange}
+                  name="lastName"
+                  placeholder="Snow"
+                />
+                <Input
+                  value={this.state.userName}
+                  onChange={this.handleInputChange}
+                  name="username"
+                  placeholder="Username"
+                />
+                <Input
+                  value={this.state.password}
+                  onChange={this.handleInputChange}
+                  name="password"
+                  placeholder="Password"
+                />
+                <FormBtn
+                  disabled={!(this.state.author && this.state.title)}
+                  onClick={this.handleFormSubmit}
+                >
+                  Sign Up
+                </FormBtn>
+              </form>
             </Jumbotron>
           </Col>
         </Row>

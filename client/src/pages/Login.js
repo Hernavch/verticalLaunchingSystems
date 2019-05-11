@@ -20,9 +20,26 @@ class Detail extends Component {
         <Row>
           <Col size="md-12">
             <Jumbotron>
-              <h1>
-                Log-In :)
-              </h1>
+              <form>
+                <Input
+                  value={this.state.userName}
+                  onChange={this.handleInputChange}
+                  name="username"
+                  placeholder="Username"
+                />
+                <Input
+                  value={this.state.password}
+                  onChange={this.handleInputChange}
+                  name="password"
+                  placeholder="Password"
+                />
+                <FormBtn
+                  disabled={!(this.state.author && this.state.title)}
+                  onClick={this.handleFormSubmit}
+                >
+                  Login
+                </FormBtn>
+              </form>
             </Jumbotron>
           </Col>
         </Row>
