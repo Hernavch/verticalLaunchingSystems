@@ -4,16 +4,33 @@ import { Col, Row, Container } from "../components/Grid";
 import Jumbotron from "../components/Jumbotron";
 import Card from "../components/Card"
 import { Input, TextArea, FormBtn } from "../components/Form";
-import API from "../utils/API";
+import API from '../utils/API';
+// // import { Link } from 'react-router-dom';
+// import RandomHomeComponent from '../components/RandomHomeComponent';
 
-class Detail extends Component {
+class Login extends Component {
   state = {
-    book: {}
+    email: '',
+    password: '',
   };
-  // Add code to get the book with an _id equal to the id in the route param
-  // e.g. http://localhost:3000/books/:id
-  // The book id for this route can be accessed using this.props.match.params.id
 
+  componentDidMount() {
+    const token = localStorage.getItem('current_user_token');
+
+    if (token) {
+      API.validateToken(token)
+        .then(() => this.props.history.push('/'))
+        .catch(() => localStorage.removeItem('current_user_token'));
+    }
+  }
+
+  onSubmit = () => {
+    API.login(this.state)
+      .then(res => localStorage.setItem('current_user_token', res.data.token))
+      .catch(err => console.log(err));
+  };
+
+  onChange = key => e => this.setState({ [key]: e.target.value });
   render() {
     return (
       <Container fluid>
@@ -22,20 +39,20 @@ class Detail extends Component {
             <Jumbotron>
               <form>
                 <Input
-                  value={this.state.userName}
-                  onChange={this.handleInputChange}
-                  name="username"
-                  placeholder="Username"
+                  value={this.state.email}
+                  onChange={this.onChange('email')}
+                  name="email"
+                  placeholder="email@email.com"
                 />
                 <Input
                   value={this.state.password}
-                  onChange={this.handleInputChange}
+                  onChange={this.onChange('password')}
                   name="password"
                   placeholder="Password"
                 />
                 <FormBtn
-                  disabled={!(this.state.author && this.state.title)}
-                  onClick={this.handleFormSubmit}
+                  disabled={!(this.state.email && this.state.password)}
+                  onClick={this.onSubmit}
                 >
                   Login
                 </FormBtn>
@@ -50,7 +67,7 @@ class Detail extends Component {
         </Row>
         <Row>
           <Col size="md-2">
-            <Link to="/">← Back to Authors</Link>
+            <Link to="/">← Sign Up</Link>
             </Col>
         </Row>
       </Container>
@@ -58,4 +75,4 @@ class Detail extends Component {
   }
 }
 
-export default Detail;
+export default Login;

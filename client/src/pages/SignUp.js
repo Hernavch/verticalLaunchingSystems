@@ -8,11 +8,30 @@ import API from "../utils/API";
 
 class SignUp extends Component {
   state = {
-    book: {}
+    firstName:'',
+    lastName:'',
+    email:'',
+    password:'',
+
   };
-  // Add code to get the book with an _id equal to the id in the route param
-  // e.g. http://localhost:3000/books/:id
-  // The book id for this route can be accessed using this.props.match.params.id
+  
+  componentDidMount() {
+    const token = localStorage.getItem('current_user_token');
+
+    if (token) {
+      API.validateToken(token)
+        .then(() => this.props.history.push('/'))
+        .catch(() => localStorage.removeItem('current_user_token'));
+    }
+  }
+
+  onSubmit = () => {
+    API.signup(this.state)
+      .then(res => localStorage.setItem('current_user_token', res.data.token))
+      .catch(err => console.log(err));
+  };
+
+  onChange = key => e => this.setState({ [key]: e.target.value });
 
   render() {
     return (
@@ -24,30 +43,30 @@ class SignUp extends Component {
             <form>
                 <Input
                   value={this.state.firstName}
-                  onChange={this.handleInputChange}
+                  onChange={this.onChange('firstName')}
                   name="firstName"
                   placeholder="John"
                 />
                 <Input
                   value={this.state.lastName}
-                  onChange={this.handleInputChange}
+                  onChange={this.onChange('lastName')}
                   name="lastName"
                   placeholder="Snow"
                 />
                 <Input
-                  value={this.state.userName}
-                  onChange={this.handleInputChange}
+                  value={this.state.email}
+                  onChange={this.onChange('email')}
                   name="username"
                   placeholder="Username"
                 />
                 <Input
                   value={this.state.password}
-                  onChange={this.handleInputChange}
+                  onChange={this.onChange('password')}
                   name="password"
                   placeholder="Password"
                 />
                 <FormBtn
-                  disabled={!(this.state.author && this.state.title)}
+                  disabled={!(this.state.firstName && this.state.lastName && this.state.email && this.state.password)}
                   onClick={this.handleFormSubmit}
                 >
                   Sign Up
