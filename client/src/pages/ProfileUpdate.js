@@ -6,7 +6,7 @@ import Card from "../components/Card"
 import { Input, TextArea, FormBtn } from "../components/Form";
 import API from "../utils/API";
 
-class SignUp extends Component {
+class ProfileUpdate extends Component {
   state = {
     firstName:'',
     lastName:'',
@@ -39,7 +39,7 @@ class SignUp extends Component {
         <Row>
           <Col size="md-12">
             <Jumbotron>
-              <h1>Sign Up</h1>
+              <h1>Update Profile</h1>
             <form>
                 <Input
                   value={this.state.firstName}
@@ -85,4 +85,4 @@ class SignUp extends Component {
   }
 }
 
-export default SignUp;
+export default ProfileUpdate;

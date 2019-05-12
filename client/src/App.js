@@ -7,6 +7,7 @@ import SignUp from "./pages/SignUp"
 import Login from "./pages/Login";
 import NoMatch from "./pages/NoMatch";
 import Nav from "./components/Nav";
+import ProfileUpdate from "./pages/ProfileUpdate";
 
 
 function App() {
@@ -20,6 +21,8 @@ function App() {
           <Route exact path="/books" component={Books} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/employer" component={Employer}/>
+          <Route exact path="/update" component={ProfileUpdate}/>
+
 
           <Route component={NoMatch} />
         </Switch>
