@@ -14,19 +14,29 @@ class Login extends Component {
     password: '',
   };
 
-  componentDidMount() {
-    const token = localStorage.getItem('current_user_token');
-
-    if (token) {
-      API.validateToken(token)
-        .then(() => this.props.history.push('/'))
-        .catch(() => localStorage.removeItem('current_user_token'));
-    }
+  handleInputChange = event => {
+    // const { name, value } = event.target;
+    // console.log(event.target.id)
+    // console.log(event.target.value);
+    console.log("hello");
+    // // this.setState({
+    //   [name]: value
+    // });
   }
+  // componentDidMount() {
+  //   const token = localStorage.getItem('current_user_token');
 
-  onSubmit = () => {
+  //   if (token) {
+  //     API.validateToken(token)
+  //       .then(() => this.props.history.push('/'))
+  //       .catch(() => localStorage.removeItem('current_user_token'));
+  //   }
+  // }
+
+  onSubmit = (event) => {
+    event.preventDefault();
     API.login(this.state)
-      .then(res => localStorage.setItem('current_user_token', res.data.token))
+      .then(res => console.log(res.data))
       .catch(err => console.log(err));
   };
 
@@ -34,6 +44,7 @@ class Login extends Component {
   render() {
     return (
       <Container fluid>
+      
         <Row>
           <Col size="md-12">
             <Jumbotron>
@@ -43,6 +54,8 @@ class Login extends Component {
                   onChange={this.onChange('email')}
                   name="email"
                   placeholder="email@email.com"
+
+                  
                 />
                 <Input
                   value={this.state.password}

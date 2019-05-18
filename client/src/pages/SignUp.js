@@ -15,15 +15,15 @@ class SignUp extends Component {
 
   };
   
-  componentDidMount() {
-    const token = localStorage.getItem('current_user_token');
+  // componentDidMount() {
+  //   const token = localStorage.getItem('current_user_token');
 
-    if (token) {
-      API.validateToken(token)
-        .then(() => this.props.history.push('/'))
-        .catch(() => localStorage.removeItem('current_user_token'));
-    }
-  }
+  //   if (token) {
+  //     API.validateToken(token)
+  //       .then(() => this.props.history.push('/'))
+  //       .catch(() => localStorage.removeItem('current_user_token'));
+  //   }
+  // }
 
   onSubmit = () => {
     API.signup(this.state)

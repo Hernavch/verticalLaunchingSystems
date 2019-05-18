@@ -10,17 +10,18 @@ module.exports = {
     db.User
        .find(req.query)
        .sort({ date: -1 })
-       .then(dbModel => res.json(dbModel))
+       .then(dbModel => res.json(dbModel.body))
        .catch(err => res.status(422).json(err));
       },
 
   login: function(req, res) {
+    // console.log(db.User);
     db.User
-       .find(req.query)
-       .sort({ date: -1 })
-       .then(dbModel => res.json(dbModel))
+       .findOne({email: req.body.email}, (err, dbModel )=> console.log(dbModel))
        .catch(err => res.status(422).json(err));
           },
+
+  
   findAll: function(req, res) {
     db.User
       .find(req.query)
