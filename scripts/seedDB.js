@@ -42,14 +42,6 @@ const userSeed = [
     date: new Date(Date.now())
   },
   {
-    firstName: "Escrow",
-    lastName: "Punch",
-    userName:"PunchEscrow",
-    email:"PunchEscrow@email.com",
-    password:"1234",
-    date: new Date(Date.now())
-  },
-  {
     firstName: "Harry",
     lastName: "Potter",
     userName:"Hpotter",
@@ -90,22 +82,6 @@ const userSeed = [
     date: new Date(Date.now())
   },
   {
-    firstName: "Elon",
-    lastName: "Vance",
-    userName:"Evance",
-    email:"Evance@email.com",
-    password:"1234",
-    date: new Date(Date.now())
-  },
-  {
-    firstName: "Steve",
-    lastName: "Walter",
-    userName:"Swalter",
-    email:"Swalter@email.com",
-    password:"1234",
-    date: new Date(Date.now())
-  },
-  {
     firstName: "Astro",
     lastName: "Tyson",
     userName:"Atyson",
@@ -113,14 +89,6 @@ const userSeed = [
     password:"1234",
     date: new Date(Date.now())
   }, 
-  {
-    firstName: "George",
-    lastName: "Year",
-    userName:"Geoyear",
-    email:"Geoyear@email.com",
-    password:"1234",
-    date: new Date(Date.now())
-  },
   {
     firstName: "Frank",
     lastName: "Shelley",
@@ -134,14 +102,6 @@ const userSeed = [
     lastName: "Gatsby",
     userName:"Ggasby",
     email:"Ggasby@email.com",
-    password:"1234",
-    date: new Date(Date.now())
-  },
-  {
-    firstName: "Noah",
-    lastName: "Borne",
-    userName:"Nborne",
-    email:"Nborne@email.com",
     password:"1234",
     date: new Date(Date.now())
   }

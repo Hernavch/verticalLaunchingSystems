@@ -17,6 +17,9 @@ export default {
   saveBook: function(bookData) {
     return axios.post("/api/books", bookData);
   },
+  signUp: function(signupdata) {
+    return axios.post("/api/users/signup", signupdata);
+  },
   login: function(loginData) {
     return axios.post("/api/users/login", loginData);
   },

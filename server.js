@@ -1,9 +1,10 @@
 const express = require("express");
-
 const mongoose = require("mongoose");
 const routes = require("./routes");
+require('./services/passport');
 const app = express();
 
+require('./routes/authRoutes')(app);
 
 const PORT = process.env.PORT || 3001;
 
@@ -16,12 +17,6 @@ if (process.env.NODE_ENV === "production") {
 }
 // Add routes, both API and view
 app.use(routes);
-
-
-// Add passport logic
-
-console.log(process.env.googleclientID);
-console.log(process.env.googleclientSecret);
 
 
 

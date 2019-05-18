@@ -10,6 +10,7 @@ class SignUp extends Component {
   state = {
     firstName:'',
     lastName:'',
+    username:'',
     email:'',
     password:'',
 
@@ -25,12 +26,19 @@ class SignUp extends Component {
   //   }
   // }
 
-  onSubmit = () => {
-    API.signup(this.state)
-      .then(res => localStorage.setItem('current_user_token', res.data.token))
+  // onSubmit = () => {
+  //   API.signup(this.state)
+  //     .then(res => localStorage.setItem('current_user_token', res.data.token))
+  //     .catch(err => console.log(err));
+  // };
+
+  onSubmit = (event) => {
+    event.preventDefault();
+    alert('here');
+    API.signUp(this.state)
+      .then(res => console.log(res.data))
       .catch(err => console.log(err));
   };
-
   onChange = key => e => this.setState({ [key]: e.target.value });
 
   render() {
@@ -54,6 +62,12 @@ class SignUp extends Component {
                   placeholder="Snow"
                 />
                 <Input
+                  value={this.state.username}
+                  onChange={this.onChange('username')}
+                  name="username"
+                  placeholder="SnowJo"
+                />
+                <Input
                   value={this.state.email}
                   onChange={this.onChange('email')}
                   name="username"
@@ -67,7 +81,7 @@ class SignUp extends Component {
                 />
                 <FormBtn
                   disabled={!(this.state.firstName && this.state.lastName && this.state.email && this.state.password)}
-                  onClick={this.handleFormSubmit}
+                  onClick={this.onSubmit}
                 >
                   Sign Up
                 </FormBtn>

@@ -2,8 +2,11 @@ const router = require('express').Router();
 const usersController = require('../../controllers/usersController');
 
 // Matches with "/api/books"
-router.route('/login').post(usersController.login);
+router.route('/login')
+.post(usersController.login);
 
+router.route('/signup')
+.post(usersController.signUp);
 // router.route('auth/google/callback');
 
 // router.route('/validate').post(usersController.validateToken);
