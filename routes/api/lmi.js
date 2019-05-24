@@ -1,12 +1,15 @@
 const router = require('express').Router();
-const usersController = require('../../controllers/usersController');
+const careerController = require('../../controllers/careerController');
 
 // Matches with "/api/users"
-router.route('/login')
-.post(usersController.login);
+router.route('/details')
+.post(careerController.details);
 
-router.route('/signup')
-.post(usersController.signUp);
+router.route('/page')
+.post(careerController.page);
+
+router.route('/video')
+.post(careerController.video);
 // router.route('auth/google/callback');
 
 // router.route('/validate').post(usersController.validateToken);

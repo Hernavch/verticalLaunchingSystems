@@ -7,17 +7,24 @@ var token = jwt.sign({ foo: 'bar' }, 'shhhhh');
 // Defining methods for the booksController
 module.exports = {
   signUp: function(req, res) {
-     var user= {
-      firstName: req.body.firstName,
-      lastName: req.body.lastName,
-      username: req.body.username,
-      password: req.body.password
-     }
-        
-    db.User
-    .create(user)
-    console.log(user)
-    // .catch(err => res.status(422).json(err))
+    bcrypt.hash(req.body.password, saltRounds, function(err,hash){
+      if(err){
+        console.log("no hash");
+      }
+      const user= {
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
+        username: req.body.username,
+        email:req.body.email,
+        password:hash
+       }
+             
+      db.User
+      .create(user)
+      .then(data => console.log(data, "then data"))
+      .catch(err => res.status(422).json(err))
+    });
+  
       },
   create: function(req, res) {
        const {username, password} = req.body;
@@ -35,9 +42,21 @@ module.exports = {
         },
   login: function(req, res) {
     // console.log(db.User);
-    const {username, password} = req.body;
+    const {email, password} = req.body;
     db.User
-       .findOne({username: req.body.username}, (err, dbModel )=> console.log(dbModel))
+       .findOne({email})
+       .then(dbModel => {
+        bcrypt.compare(password, dbModel.password, function(error, same){
+           if(same){
+             return res.json({ok:true}, console.log("hello"))
+           } else {
+             return res.status(404).json({
+               error:"Password Username Incorrect"
+               
+             })
+           }
+         })
+       })
        .catch(err => res.status(422).json(err));
           },
 

@@ -11,10 +11,12 @@ import ProfileUpdate from "./pages/ProfileUpdate";
 
 
 function App() {
+ 
   return (
     <Router>
       <div>
-        <Nav />
+        {/* <Nav userLogin={this.state.loggedIn}/> */}
+        <Nav/>
         <Switch>
         <Route exact path="/" component={SignUp}/>
           <Route exact path="/user" component={Books}/>

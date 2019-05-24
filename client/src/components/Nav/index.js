@@ -1,9 +1,12 @@
 import React from "react";
+import "./style.css";
 import { Link } from "react-router-dom";
 
-function Nav() {
+function Nav(props) {
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
+
+//  <p> the User is {props.isloggedIn ? "" : "login"}</p>
+    <nav className="navbar navbar-expand-lg navbar-dark main-nav">
       <a className="navbar-brand" href="/">
         VLS
       </a>

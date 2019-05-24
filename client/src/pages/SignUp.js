@@ -3,8 +3,9 @@ import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../components/Grid";
 import Jumbotron from "../components/Jumbotron";
 import Card from "../components/Card"
-import { Input, TextArea, FormBtn } from "../components/Form";
+import { Input, TextArea, FormBtn, FormTitle } from "../components/Form";
 import API from "../utils/API";
+import { Button } from "reactstrap";
 
 class SignUp extends Component {
   state = {
@@ -13,6 +14,7 @@ class SignUp extends Component {
     username:'',
     email:'',
     password:'',
+   // loggedIn: false
 
   };
   
@@ -34,46 +36,55 @@ class SignUp extends Component {
 
   onSubmit = (event) => {
     event.preventDefault();
-    alert('here');
-    API.signUp(this.state)
+     API.signUp(this.state)
       .then(res => console.log(res.data))
-      .catch(err => console.log(err));
+      .catch (err =>  alert(err.response.data.message));
   };
   onChange = key => e => this.setState({ [key]: e.target.value });
 
   render() {
     return (
       <Container fluid>
+    {/* <Nav isloggedIn={this.state.isLoggedIn} /> */}
         <Row>
-          <Col size="md-12">
-            <Jumbotron>
-              <h1>Sign Up</h1>
+          <Col size="md-8">
+          
             <form>
+            <h1 className="headerOne">Sign Up</h1>
                 <Input
+                  label="First Name"
                   value={this.state.firstName}
                   onChange={this.onChange('firstName')}
                   name="firstName"
                   placeholder="John"
                 />
+                {/* <label>Last Name</label> */}
                 <Input
+                  label= "Last Name"
                   value={this.state.lastName}
                   onChange={this.onChange('lastName')}
                   name="lastName"
                   placeholder="Snow"
                 />
+                {/* <label>Username</label> */}
                 <Input
+                  label= "Username"
                   value={this.state.username}
                   onChange={this.onChange('username')}
                   name="username"
-                  placeholder="SnowJo"
+                  placeholder="username"
                 />
+                {/* <label>Email</label> */}
                 <Input
+                  label= "Email"
                   value={this.state.email}
                   onChange={this.onChange('email')}
-                  name="username"
-                  placeholder="Username"
+                  name="email"
+                  placeholder="email"
                 />
+                
                 <Input
+                  label= "Password"
                   value={this.state.password}
                   onChange={this.onChange('password')}
                   name="password"
@@ -85,14 +96,14 @@ class SignUp extends Component {
                 >
                   Sign Up
                 </FormBtn>
+                {/* <Button color="danger">Danger!</Button> */}
               </form>
-            </Jumbotron>
+            
           </Col>
         </Row>
         <Row>
-          <Card size="md-10 md-offset-1">
-            
-          </Card>
+             
+         
         </Row>
        </Container>
     );

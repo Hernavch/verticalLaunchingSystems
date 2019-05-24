@@ -47,9 +47,11 @@ class Login extends Component {
       
         <Row>
           <Col size="md-12">
-            <Jumbotron>
+           
               <form>
+                <h1 className="headerOne" >Login</h1>
                 <Input
+                  label="Email"
                   value={this.state.email}
                   onChange={this.onChange('email')}
                   name="email"
@@ -58,6 +60,7 @@ class Login extends Component {
                   
                 />
                 <Input
+                  label="Password"
                   value={this.state.password}
                   onChange={this.onChange('password')}
                   name="password"
@@ -70,7 +73,6 @@ class Login extends Component {
                   Login
                 </FormBtn>
               </form>
-            </Jumbotron>
           </Col>
         </Row>
         <Row>

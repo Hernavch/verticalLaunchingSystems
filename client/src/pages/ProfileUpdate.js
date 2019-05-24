@@ -3,33 +3,33 @@ import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../components/Grid";
 import Jumbotron from "../components/Jumbotron";
 import Card from "../components/Card"
-import { Input, TextArea, FormBtn } from "../components/Form";
+import { Input, TextArea, FormBtn, RadioBtn, Selectbtn } from "../components/Form";
 import API from "../utils/API";
 
 class ProfileUpdate extends Component {
   state = {
-    firstName:'',
-    lastName:'',
-    email:'',
-    password:'',
+    interests:'',
+    education:'',
+    certifications:'',
+    skills:'',
 
   };
   
-  componentDidMount() {
-    const token = localStorage.getItem('current_user_token');
+  // componentDidMount() {
+  //   const token = localStorage.getItem('current_user_token');
 
-    if (token) {
-      API.validateToken(token)
-        .then(() => this.props.history.push('/'))
-        .catch(() => localStorage.removeItem('current_user_token'));
-    }
-  }
+  //   if (token) {
+  //     API.validateToken(token)
+  //       .then(() => this.props.history.push('/'))
+  //       .catch(() => localStorage.removeItem('current_user_token'));
+  //   }
+  // }
 
-  onSubmit = () => {
-    API.signup(this.state)
-      .then(res => localStorage.setItem('current_user_token', res.data.token))
-      .catch(err => console.log(err));
-  };
+  // onSubmit = () => {
+  //   API.signup(this.state)
+  //     .then(res => localStorage.setItem('current_user_token', res.data.token))
+  //     .catch(err => console.log(err));
+  // };
 
   onChange = key => e => this.setState({ [key]: e.target.value });
 
@@ -38,41 +38,59 @@ class ProfileUpdate extends Component {
       <Container fluid>
         <Row>
           <Col size="md-12">
-            <Jumbotron>
-              <h1>Update Profile</h1>
             <form>
+              <h1 className="headerOne">Update Profile</h1>
                 <Input
-                  value={this.state.firstName}
-                  onChange={this.onChange('firstName')}
-                  name="firstName"
-                  placeholder="John"
+                  label="Interests"
+                  value={this.state.intrests}
+                  onChange={this.onChange('interests')}
+                  name="interests"
+                  placeholder="Software Developer"
                 />
                 <Input
-                  value={this.state.lastName}
-                  onChange={this.onChange('lastName')}
-                  name="lastName"
-                  placeholder="Snow"
-                />
+                  label="Education"
+                  value={this.state.education}
+                  onChange={this.onChange('education')}
+                  name="education"
+                  placeholder="Bachelors"
+                 />
+                  <RadioBtn
+                  label="option one"
+                  value="true" 
+                  />
+                  <RadioBtn
+                  label="option two"
+                  value="true"/>
+                  <RadioBtn 
+                  label="option three"
+                  value="true"/>
+                 
                 <Input
-                  value={this.state.email}
-                  onChange={this.onChange('email')}
-                  name="username"
-                  placeholder="Username"
+                  label="Certifications"
+                  value={this.state.certifications}
+                  onChange={this.onChange('certifications')}
+                  name="certifications"
+                  placeholder="CPR/AED"
                 />
+               
                 <Input
-                  value={this.state.password}
-                  onChange={this.onChange('password')}
-                  name="password"
-                  placeholder="Password"
+                  label="Skills"
+                  value={this.state.skills}
+                  onChange={this.onChange('skills')}
+                  name="skills"
+                  placeholder="skills"
                 />
+                <Selectbtn
+                label="Question Drop down"
+                optionOne="More Options"
+                optionTwo="Other"/>
                 <FormBtn
-                  disabled={!(this.state.firstName && this.state.lastName && this.state.email && this.state.password)}
+                  // disabled={!(this.state.firstName && this.state.lastName && this.state.email && this.state.password)}
                   onClick={this.handleFormSubmit}
                 >
-                  Sign Up
+                  Update
                 </FormBtn>
               </form>
-            </Jumbotron>
           </Col>
         </Row>
         <Row>
