@@ -3,6 +3,7 @@ const bcrypt = require('bcrypt');
 const saltRounds = 10;
 var jwt = require('jsonwebtoken');
 var token = jwt.sign({ foo: 'bar' }, 'shhhhh');
+require('dotenv').config()
 
 // Defining methods for the booksController
 module.exports = {
@@ -48,7 +49,13 @@ module.exports = {
        .then(dbModel => {
         bcrypt.compare(password, dbModel.password, function(error, same){
            if(same){
-             return res.json({ok:true}, console.log("hello"))
+            //  return res.json({ok:true}, console.log("hello"))
+            token = jwt.sign({
+              username:dbModel.username,
+              id:dbModel._id
+            }, process.env.SECRET_KEY )
+            return res.json({token})
+
            } else {
              return res.status(404).json({
                error:"Password Username Incorrect"

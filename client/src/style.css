@@ -1,13 +1,19 @@
 body{
-    background-image: url('./assets/images/moulin.png');
+    background-image: url('./assets/images/camera-coffee-colorful-1391374.jpg');
+    /* background-position:center ; */
+    background-size: cover;
 }
 
 
 form{
     text-align: left;
+    color:white;
+    font-size: 20px;
     width:850px;
-    background-color: blue;
-    opacity: .8;
+    background-color:hsl(209, 45%, 55%);
+    border: solid;
+    border-color:hsl(30, 33%, 99%);
+    opacity: .9;
     padding:20px;
     margin-top:35px;
    

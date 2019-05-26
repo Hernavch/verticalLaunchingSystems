@@ -49,7 +49,7 @@ class SignUp extends Component {
         <Row>
           <Col size="md-8">
           
-            <form>
+            <form >
             <h1 className="headerOne">Sign Up</h1>
                 <Input
                   label="First Name"
