@@ -8,9 +8,10 @@ import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../components/Grid";
 import { List, ListItem } from "../components/List";
 import { Input, TextArea, FormBtn } from "../components/Form";
+import Fullcard from "../components/FullCard";
 
 
-class Books extends Component {
+class Users extends Component {
   state = {
     books: [],
     title: "",
@@ -18,57 +19,18 @@ class Books extends Component {
     synopsis: ""
   };
 
-  componentDidMount() {
-    this.loadBooks();
-  }
-
-  loadBooks = () => {
-    API.getBooks()
-      .then(res =>
-        this.setState({ books: res.data, title: "", author: "", synopsis: "" })
-      )
-      .catch(err => console.log(err));
-  };
-
-  deleteBook = id => {
-    API.deleteBook(id)
-      .then(res => this.loadBooks())
-      .catch(err => console.log(err));
-  };
-
-  handleInputChange = event => {
-    const { name, value } = event.target;
-    this.setState({
-      [name]: value
-    });
-  };
-
-  handleFormSubmit = event => {
-    event.preventDefault();
-    if (this.state.title && this.state.author) {
-      API.saveBook({
-        title: this.state.title,
-        author: this.state.author,
-        synopsis: this.state.synopsis
-      })
-        .then(res => this.loadBooks())
-        .catch(err => console.log(err));
-    }
-  };
-
   render() {
     return (
       <Container fluid>
         <Row>
-          <Col size="md-4">
-            <Card>
-              <h1>Profile Page</h1>
-            </Card>
+          <Col size="md-6 sm-12">
+          <Jumbotron>
+            <FullCard/>
+            
+              </Jumbotron>
            </Col>
-          <Col size="md-4 sm-12">
-            <Jumbotron>
-              <h1>Books On My List</h1>
-            </Jumbotron>
+          <Col size="md-2 sm-12">
+           
             {this.state.books.length ? (
               <List>
                 {this.state.books.map(book => (
@@ -86,7 +48,7 @@ class Books extends Component {
               <h3>No Results to Display</h3>
             )}
           </Col>
-          <Col size="md-4">
+          <Col size="md-4 sm-12">
             <Card> 
               <h1> I am a card </h1>
             </Card>
@@ -114,4 +76,4 @@ class Books extends Component {
   }
 }
 
-export default Books;
+export default Users;

@@ -1,11 +1,10 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../components/Grid";
-import Jumbotron from "../components/Jumbotron";
-import Card from "../components/Card"
+
 import { Input, TextArea, FormBtn, FormTitle } from "../components/Form";
 import API from "../utils/API";
-import { Button } from "reactstrap";
+
 
 class SignUp extends Component {
   state = {
@@ -27,13 +26,6 @@ class SignUp extends Component {
   //       .catch(() => localStorage.removeItem('current_user_token'));
   //   }
   // }
-
-  // onSubmit = () => {
-  //   API.signup(this.state)
-  //     .then(res => localStorage.setItem('current_user_token', res.data.token))
-  //     .catch(err => console.log(err));
-  // };
-
   onSubmit = (event) => {
     event.preventDefault();
      API.signUp(this.state)

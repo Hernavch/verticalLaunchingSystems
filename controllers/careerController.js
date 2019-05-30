@@ -16,13 +16,13 @@ module.exports = {
         "Content-Type":"application/json"
     }})
      .then(function(response) {
-       res.json(response.data.OccupationDetail[0].OnetTitle);
+      //  res.json(response.data.OccupationDetail[0].OnetTitle);
       var occName= response.data.OccupationDetail[0].OnetTitle;
       var occPage= (response.data.OccupationDetail[0].COSVideoURL);
       var occDetail= response.data.OccupationDetail[0].Projections;
       var occVideo =response.data.OccupationDetail[0].Video;
     
-    //   console.log(response.data);
+      console.log(response.data);
     
     // console.log(occPage);
     // console.log(occVideo);

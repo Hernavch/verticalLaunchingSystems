@@ -1,11 +1,11 @@
 const db = require("../models");
-const bcrypt = require('bcrypt');
+const bcrypt = require("bcrypt");
 const saltRounds = 10;
-var jwt = require('jsonwebtoken');
-var token = jwt.sign({ foo: 'bar' }, 'shhhhh');
+var jwt = require("jsonwebtoken");
+// var token = jwt.sign({ foo: 'bar' }, 'shhhhh');
 require('dotenv').config()
 
-// Defining methods for the booksController
+// Defining methods for the usersController
 module.exports = {
   signUp: function(req, res) {
     bcrypt.hash(req.body.password, saltRounds, function(err,hash){
@@ -27,36 +27,24 @@ module.exports = {
     });
   
       },
-  create: function(req, res) {
-       const {username, password} = req.body;
-       bcrypt.hash(password, 10, function(err, hash){
-        const user = {
-          username, 
-          password:hash
-        }
-        db.User
-        .create(user)
-        .then(dbModel => res.json(dbModel))
-        .catch(err => res.status(422).json(err));
-      });          
-          
-        },
   login: function(req, res) {
     // console.log(db.User);
     const {email, password} = req.body;
     db.User
        .findOne({email})
        .then(dbModel => {
+         console.log(dbModel);
         bcrypt.compare(password, dbModel.password, function(error, same){
            if(same){
             //  return res.json({ok:true}, console.log("hello"))
-            token = jwt.sign({
+            const token = jwt.sign({
               username:dbModel.username,
               id:dbModel._id
             }, process.env.SECRET_KEY )
             return res.json({token})
-
+            
            } else {
+             console.log("No Match")
              return res.status(404).json({
                error:"Password Username Incorrect"
                
@@ -65,16 +53,31 @@ module.exports = {
          })
        })
        .catch(err => res.status(422).json(err));
-          },
+      },
+  // findUser: function(req, res) {
+  //     const token = req.header("Authorization");
+  //     let bearer="";
+  //     console.log(token);
+  //      if(token){
+  //      bearer =token.replace("Bearer ", "")
+  //      }else{
+  //       return res.status(404).json({
+  //         error:"Authorization required 1"
+  //        })
+  //       }
 
-  
-  findAll: function(req, res) {
-    db.User
-      .find(req.query)
-      .sort({ date: -1 })
-      .then(dbModel => res.json(dbModel))
-      .catch(err => res.status(422).json(err));
-  },
+  //       jwt.verify(bearer,process.env.SECRET_KEY, function(err, decoded){
+  //         if (err){
+  //            return res.status(403).json({
+  //              error:"Authorization required"
+  //            });
+  //         }else{
+  //           console.log(decoded)
+  //         }
+             
+  //       });
+
+  // },
   findById: function(req, res) {
     db.User
       .findById(req.params.id)

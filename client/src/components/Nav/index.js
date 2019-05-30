@@ -6,7 +6,7 @@ function Nav(props) {
   return (
 
 //  <p> the User is {props.isloggedIn ? "" : "login"}</p>
-    <nav className="navbar navbar-expand-lg navbar-dark main-nav">
+    <nav className="navbar navbar-expand-lg navbar-dark main-nav sm-12">
       <a className="navbar-brand" href="/">
         VLS
       </a>

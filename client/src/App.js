@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Books from "./pages/Books";
+import Users from "./pages/Users"
 import Detail from "./pages/Detail";
 import Employer from "./pages/Employer";
 import SignUp from "./pages/SignUp"
@@ -19,7 +20,7 @@ function App() {
         <Nav/>
         <Switch>
         <Route exact path="/" component={SignUp}/>
-          <Route exact path="/user" component={Books}/>
+          <Route exact path="/user" component={Users}/>
           <Route exact path="/books" component={Books} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/employer" component={Employer}/>
