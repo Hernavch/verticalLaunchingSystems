@@ -47,6 +47,7 @@ module.exports = {
             console.log(token);
             return res.json({
               token, 
+              name:dbModel.firstName,
               username: dbModel.username,
               id: dbModel._id})
             

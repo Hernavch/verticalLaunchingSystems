@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../components/Grid";
 import Jumbotron from "../components/Jumbotron";
 import Card from "../components/Card"
+import UserContext from '../utils/UserContext';
 import { Input, TextArea, FormBtn, RadioBtn, Selectbtn } from "../components/Form";
 import API from "../utils/API";
 
@@ -35,6 +36,8 @@ class ProfileUpdate extends Component {
 
   render() {
     return (
+    <UserContext.Consumer>
+      {({user}) => (
       <Container fluid>
         <Row>
           <Col size="md-12">
@@ -99,6 +102,9 @@ class ProfileUpdate extends Component {
           </Card>
         </Row>
        </Container>
+       )
+      }
+      </UserContext.Consumer>
     );
   }
 }

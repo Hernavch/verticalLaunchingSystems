@@ -17,6 +17,7 @@ function App() {
  
   return (
     <UserProvider>
+    
     <Router>
       <div>
         {/* <Nav userLogin={this.state.loggedIn}/> */}
