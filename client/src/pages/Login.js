@@ -5,6 +5,7 @@ import Jumbotron from "../components/Jumbotron";
 import Card from "../components/Card"
 import { Input, TextArea, FormBtn } from "../components/Form";
 import API from '../utils/API';
+import UserContext from '../utils/UserContext';
 // // import { Link } from 'react-router-dom';
 // import RandomHomeComponent from '../components/RandomHomeComponent';
 
@@ -12,67 +13,78 @@ class Login extends Component {
   state = {
     email: '',
     password: '',
+    error:'',
+    currentUser:null
   };
-
-  handleInputChange = event => {
-    // const { name, value } = event.target;
-    // console.log(event.target.id)
-    // console.log(event.target.value);
-    console.log("hello");
-    // // this.setState({
-    //   [name]: value
-    // });
-  }
-  // componentDidMount() {
-  //   const token = localStorage.getItem('current_user_token');
-
-  //   if (token) {
-  //     API.validateToken(token)
-  //       .then(() => this.props.history.push('/'))
-  //       .catch(() => localStorage.removeItem('current_user_token'));
-  //   }
-  // }
-
-  onSubmit = (event) => {
-    event.preventDefault();
-    API.login(this.state)
-      .then(res => console.log(res.data))
-      .catch(err => console.log(err));
-  };
-
   onChange = key => e => this.setState({ [key]: e.target.value });
+  
+  handleChange = event => {
+    const {name, value} = event.target;
+    this.setState({
+      [name]: value
+    });
+    }
+
+  //  onSubmit = (event) => {
+  //   event.preventDefault();
+  //   API.login(this.state)
+  //     .then(res => console.log(res.data))
+  //     .catch(err => console.log(err));
+  // };
+
+  handleLogin = (event, onLogin) => {
+    event.preventDefault();
+    const {history} = this.props;
+    const {email, password} = this.state;
+
+    API.login({email, password})
+    .then(res => {
+        onLogin(res.data);
+        history.push("/")
+    })
+    .catch(err => {
+      this.setState({error: err.response.data.error})
+    });
+  } 
+
+
   render() {
+   const {email, password, error} = this.state;
+
     return (
-      <Container fluid>
+      <UserContext.Consumer>
+      {({onLogin}) => (
+      
+        <Container fluid>
       
         <Row>
-          <Col size="md-12">
+          <Col size="md-12 sm-12">
            
-              <form>
+              <form size="sm-12">
                 <h1 className="headerOne" >Login</h1>
                 <Input
                   label="Email"
-                  value={this.state.email}
+                  value={email}
                   onChange={this.onChange('email')}
                   name="email"
                   placeholder="email@email.com"
-
-                  
+                 
                 />
                 <Input
                   label="Password"
-                  value={this.state.password}
+                  value={password}
                   onChange={this.onChange('password')}
                   name="password"
                   placeholder="Password"
                 />
                 <FormBtn
-                  disabled={!(this.state.email && this.state.password)}
-                  onClick={this.onSubmit}
-                >
-                  Login
-                </FormBtn>
-              </form>
+                  disabled={!(email && password)}
+                  onClick={(event) => this.handleLogin(event, onLogin)}
+                  >   Login
+                 </FormBtn>
+
+                    </form>
+              
           </Col>
         </Row>
         <Row>
@@ -81,11 +93,17 @@ class Login extends Component {
           </Card>
         </Row>
         <Row>
-          <Col size="md-2">
-            <Link to="/">← Sign Up</Link>
+          <Col size="md-2 sm-12">
+            <Link to="/signup">← Sign Up</Link>
             </Col>
         </Row>
       </Container>
+    
+      )}
+      
+      
+      </UserContext.Consumer>
+      
     );
   }
 }

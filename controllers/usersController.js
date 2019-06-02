@@ -7,6 +7,10 @@ require('dotenv').config()
 
 // Defining methods for the usersController
 module.exports = {
+  validate: function(req, res){
+    console.log(token);
+    // jwt.verify()
+  },
   signUp: function(req, res) {
     bcrypt.hash(req.body.password, saltRounds, function(err,hash){
       if(err){
@@ -28,7 +32,6 @@ module.exports = {
   
       },
   login: function(req, res) {
-    // console.log(db.User);
     const {email, password} = req.body;
     db.User
        .findOne({email})
@@ -38,10 +41,14 @@ module.exports = {
            if(same){
             //  return res.json({ok:true}, console.log("hello"))
             const token = jwt.sign({
-              username:dbModel.username,
-              id:dbModel._id
+              username: dbModel.username,
+              id: dbModel._id
             }, process.env.SECRET_KEY )
-            return res.json({token})
+            console.log(token);
+            return res.json({
+              token, 
+              username: dbModel.username,
+              id: dbModel._id})
             
            } else {
              console.log("No Match")
@@ -78,11 +85,16 @@ module.exports = {
   //       });
 
   // },
+  
+  hello:function(req,res){
+   res.json("Hello!");
+  },
   findById: function(req, res) {
     db.User
       .findById(req.params.id)
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
+      console.log("found");
   },
   create: function(req, res) {
     db.User

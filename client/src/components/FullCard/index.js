@@ -3,11 +3,11 @@ import "./style.css";
 
 function Fullcard(props) {
   return (
-    <div className="card" >
+    <div className="card" id="fullCard" >
   
     <img className="card-img-top" src={props.img} alt="profile"></img>
      <div className="card-body">
-     <h5 className="card-title">{props.firstName}</h5>
+     <h5 className="card-title">{props.username}Username1</h5>
      <p className="card-text">{props.status}</p>
    </div>
    <ul className="list-group list-group-flush">

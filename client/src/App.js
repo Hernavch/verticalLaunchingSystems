@@ -9,18 +9,22 @@ import Login from "./pages/Login";
 import NoMatch from "./pages/NoMatch";
 import Nav from "./components/Nav";
 import ProfileUpdate from "./pages/ProfileUpdate";
+import { UserProvider } from "./utils/UserContext";
+
 
 
 function App() {
  
   return (
+    <UserProvider>
     <Router>
       <div>
         {/* <Nav userLogin={this.state.loggedIn}/> */}
         <Nav/>
         <Switch>
-        <Route exact path="/" component={SignUp}/>
+        <Route exact path="/" component={Users}/>
           <Route exact path="/user" component={Users}/>
+          <Route exact path="/signup" component={SignUp}/>
           <Route exact path="/books" component={Books} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/employer" component={Employer}/>
@@ -31,6 +35,7 @@ function App() {
         </Switch>
       </div>
     </Router>
+    </UserProvider>
   );
 }
 

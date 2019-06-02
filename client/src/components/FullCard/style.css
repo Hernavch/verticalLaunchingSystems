@@ -1,4 +1,8 @@
-.card{
+#fullCard{
     background-color:skyblue;
-    opacity: 0.8; 
+    margin: 0px;
+    position: absolute;
+    width: 500px;
+    margin-left: 0px;
+    opacity: 1;
 }
