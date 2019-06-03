@@ -25,13 +25,6 @@ class Login extends Component {
     });
     }
 
-  //  onSubmit = (event) => {
-  //   event.preventDefault();
-  //   API.login(this.state)
-  //     .then(res => console.log(res.data))
-  //     .catch(err => console.log(err));
-  // };
-
   handleLogin = (event, onLogin) => {
     event.preventDefault();
     const {history} = this.props;
@@ -58,9 +51,9 @@ class Login extends Component {
         <Container fluid>
       
         <Row>
-          <Col size="md-12 sm-12">
+          <Col size="md-8 ">
            
-              <form size="sm-12">
+              <form>
                 <h1 className="headerOne" >Login</h1>
                 <Input
                   label="Email"
@@ -93,8 +86,13 @@ class Login extends Component {
           </Card>
         </Row>
         <Row>
-          <Col size="md-2 sm-12">
-            <Link to="/signup">← Sign Up</Link>
+          <Col size="md-4">
+          <Link to="/signup" className="banner-jumbo">
+              <FormBtn>
+                  <h5>New to VLS?</h5>
+                    <h6>Sign Up</h6>
+                </FormBtn>
+                </Link>
             </Col>
         </Row>
       </Container>

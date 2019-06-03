@@ -10,7 +10,9 @@ module.exports = {
     // Run the axios.get function...
     // The axios.get function takes in a URL and returns a promise (just like $.ajax)
     axios
-    .get("https://api.careeronestop.org/v1/occupation/pilaTM9XEsBxYkv/29-1141.00/95628?training=false&interest=false&videos=true&tasks=false&dwas=false&wages=false&alternateOnetTitles=false&projectedEmployment=true&ooh=false&stateLMILinks=false&relatedOnetTitles=false&skills=false&knowledge=false&ability=false&trainingPrograms=false", 
+    var onetCode = "29-1141.00"
+    var zip = "95628"
+    .get("https://api.careeronestop.org/v1/occupation/pilaTM9XEsBxYkv/"+onetCode+"/"+ zip +"?training=false&interest=false&videos=true&tasks=false&dwas=false&wages=false&alternateOnetTitles=false&projectedEmployment=true&ooh=false&stateLMILinks=false&relatedOnetTitles=false&skills=false&knowledge=false&ability=false&trainingPrograms=false", 
     {headers: 
         {"Authorization":process.env.Authorization,
         "Content-Type":"application/json"

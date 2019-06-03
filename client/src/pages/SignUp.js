@@ -13,24 +13,15 @@ class SignUp extends Component {
     username:'',
     email:'',
     password:'',
-   // loggedIn: false
-
+     
   };
-  
-  // componentDidMount() {
-  //   const token = localStorage.getItem('current_user_token');
-
-  //   if (token) {
-  //     API.validateToken(token)
-  //       .then(() => this.props.history.push('/'))
-  //       .catch(() => localStorage.removeItem('current_user_token'));
-  //   }
-  // }
-  onSubmit = (event) => {
+  handleSignup = (event, res) => {
     event.preventDefault();
+    const {history} = this.props;
+
      API.signUp(this.state)
-      .then(res => console.log(res.data))
-      .catch (err =>  alert(err.response.data.message));
+      .then(res => history.push("/login") )
+      .catch (err =>  res.status(422).json(err));
   };
   onChange = key => e => this.setState({ [key]: e.target.value });
 
@@ -84,13 +75,22 @@ class SignUp extends Component {
                 />
                 <FormBtn
                   disabled={!(this.state.firstName && this.state.lastName && this.state.email && this.state.password)}
-                  onClick={this.onSubmit}
+                  onClick={this.handleSignup}
                 >
                   Sign Up
                 </FormBtn>
                 {/* <Button color="danger">Danger!</Button> */}
               </form>
             
+          </Col>
+          <Col size="md-4">
+          <Link to="/login" className="banner-jumbo">
+              <FormBtn>
+                  <h5>Already a user?</h5>
+                    <h6>Login</h6>
+                </FormBtn>
+                </Link>
+           
           </Col>
         </Row>
         <Row>

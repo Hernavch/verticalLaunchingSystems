@@ -4,11 +4,7 @@ import "./style.css";
 export function CardImage(props) {
   return ( 
    
-    <img img className="card-img-top" src={props.img} alt="profile">
-     <label>
-     {props.label}
-    </label>
-    </img>
+    <img img className="card-img-top"style={{ height:200,width:200 }} src={props.image} alt="profile"/>
   
   );
 }
@@ -16,7 +12,7 @@ export function CardImage(props) {
 export function CardHeader(props) {
   return ( 
     <div className="card-body">
-     <h5 className="card-title">{props.title}</h5>
+     <h5 className="card-title">Hi {props.title}</h5>
      <p className="card-text">{props.body}</p>
    </div>
   

@@ -23,3 +23,10 @@ form{
 .headerOne{
     color:white;
 }
+
+.banner-jumbo{
+    font-style: italic;
+    font-size-adjust: inherit;
+    color:white;
+
+}

@@ -1,18 +1,10 @@
 const router = require('express').Router();
 const careerController = require('../../controllers/careerController');
 
-// Matches with "/api/users"
+// Matches with "/api/career"
 router.route('/details')
 .get(careerController.details);
 
-// router.route('/page')
-// .post(careerController.page);
 
-// router.route('/video')
-// .post(careerController.video);
-// router.route('auth/google/callback');
-
-// router.route('/validate').post(usersController.validateToken);
-// router.route('/signup').post(usersController.signup);
 
 module.exports = router;

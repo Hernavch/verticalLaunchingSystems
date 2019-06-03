@@ -8,11 +8,6 @@ const isAuthenticated = require("../../controllers/authentication");
 router.route('/login')
 .post(usersController.login)
 
-router.route('/validate')
-.get(usersController.validate)
-// .get(isAuthenticated.authentication)
-
-
 router.route('/signup')
 .post(usersController.signUp);
 // router.route('auth/google/callback');

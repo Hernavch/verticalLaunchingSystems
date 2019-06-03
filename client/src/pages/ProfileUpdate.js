@@ -40,67 +40,72 @@ class ProfileUpdate extends Component {
       {({user}) => (
       <Container fluid>
         <Row>
+        {user ?(
           <Col size="md-12">
-            <form>
-              <h1 className="headerOne">Update Profile</h1>
-                <Input
-                  label="Interests"
-                  value={this.state.intrests}
-                  onChange={this.onChange('interests')}
-                  name="interests"
-                  placeholder="Software Developer"
+          <form>
+            <h1 className="headerOne">Update Profile</h1>
+              <Input
+                label="Interests"
+                value={this.state.intrests}
+                onChange={this.onChange('interests')}
+                name="interests"
+                placeholder="Software Developer"
+              />
+              <Input
+                label="Education"
+                value={this.state.education}
+                onChange={this.onChange('education')}
+                name="education"
+                placeholder="Bachelors"
+               />
+                <RadioBtn
+                label="option one"
+                value="true" 
                 />
-                <Input
-                  label="Education"
-                  value={this.state.education}
-                  onChange={this.onChange('education')}
-                  name="education"
-                  placeholder="Bachelors"
-                 />
-                  <RadioBtn
-                  label="option one"
-                  value="true" 
-                  />
-                  <RadioBtn
-                  label="option two"
-                  value="true"/>
-                  <RadioBtn 
-                  label="option three"
-                  value="true"/>
-                 
-                <Input
-                  label="Certifications"
-                  value={this.state.certifications}
-                  onChange={this.onChange('certifications')}
-                  name="certifications"
-                  placeholder="CPR/AED"
-                />
+                <RadioBtn
+                label="option two"
+                value="true"/>
+                <RadioBtn 
+                label="option three"
+                value="true"/>
                
-                <Input
-                  label="Skills"
-                  value={this.state.skills}
-                  onChange={this.onChange('skills')}
-                  name="skills"
-                  placeholder="skills"
-                />
-                <Selectbtn
-                label="Question Drop down"
-                optionOne="More Options"
-                optionTwo="Other"/>
-                <FormBtn
-                  // disabled={!(this.state.firstName && this.state.lastName && this.state.email && this.state.password)}
-                  onClick={this.handleFormSubmit}
-                >
-                  Update
-                </FormBtn>
-              </form>
-          </Col>
-        </Row>
-        <Row>
+              <Input
+                label="Certifications"
+                value={this.state.certifications}
+                onChange={this.onChange('certifications')}
+                name="certifications"
+                placeholder="CPR/AED"
+              />
+             
+              <Input
+                label="Skills"
+                value={this.state.skills}
+                onChange={this.onChange('skills')}
+                name="skills"
+                placeholder="skills"
+              />
+              <Selectbtn
+              label="Question Drop down"
+              optionOne="More Options"
+              optionTwo="Other"/>
+              <FormBtn
+                // disabled={!(this.state.firstName && this.state.lastName && this.state.email && this.state.password)}
+                onClick={this.handleFormSubmit}
+              >
+                Update
+              </FormBtn>
+            </form>
+        </Col>
+        ):(
+          <Row>
           <Card size="md-10 md-offset-1">
-            
+            <h1>Please Login</h1>
           </Card>
         </Row>
+        )}
+          
+        </Row>
+       
        </Container>
        )
       }
