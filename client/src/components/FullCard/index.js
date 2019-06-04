@@ -1,4 +1,7 @@
 import React from "react";
+import DeleteBtn from "../DeleteBtn";
+import CheckBtn from "../CheckBtn"
+
 import "./style.css";
 
 export function CardImage(props) {
@@ -12,7 +15,7 @@ export function CardImage(props) {
 export function CardHeader(props) {
   return ( 
     <div className="card-body">
-     <h5 className="card-title">Hi {props.title}</h5>
+     <h5 className="card-title titleCard">{props.title}</h5>
      <p className="card-text">{props.body}</p>
    </div>
   
@@ -21,19 +24,40 @@ export function CardHeader(props) {
 export function CardHeaderBasic(props) {
   return ( 
     <div className="card-body">
-     <h5 className="card-title">{props.title}</h5>
+     <h5 className="card-title titleCard">{props.title}</h5>
      <p className="card-text">{props.body}</p>
    </div>
   
   );
 }
 
+export function UlListBasic(props) {
+  return ( 
+    <ul className="list-group list-group-flush">
+       <li className="list-group-item "> {props.item1}
+       <CheckBtn/></li>
+      <li className="list-group-item"> {props.item2}
+      <CheckBtn/></li>
+      <li className="list-group-item ">{props.item3}
+      <CheckBtn/></li>
+  </ul>
+  );
+}
 export function UlList(props) {
   return ( 
     <ul className="list-group list-group-flush">
-       <li className="list-group-item">Status: {props.item1}</li>
-      <li className="list-group-item">Education: {props.item2}</li>
-      <li className="list-group-item">Certifications: {props.item3}</li>
+       <li className="list-group-item titleCard ">Status: {props.item1}</li>
+      <li className="list-group-item titleCard">Education: {props.item2}</li>
+      <li className="list-group-item titleCard">Certifications: {props.item3}</li>
+  </ul>
+  );
+}
+export function UlListSkill(props) {
+  return ( 
+    <ul className="list-group list-group-flush">
+       <li className="list-group-item titleCard ">Skill: {props.skill1}</li>
+      <li className="list-group-item titleCard">Skill: {props.skill2}</li>
+      <li className="list-group-item titleCard">Skill: {props.skill3}</li>
   </ul>
   );
 }

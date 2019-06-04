@@ -1,14 +1,18 @@
 import React from 'react';
 
+const userString = sessionStorage.getItem('currentUser');
+const initalUser = userString ? JSON.parse(userString) : null;
 const Context = React.createContext();
 
 export class UserProvider extends React.Component {
   state = {
-    currentUser: null
+    currentUser: initalUser
   }
 
   onLogin = (currentUser) => {
-    this.setState({ currentUser });
+    this.setState({ currentUser 
+    });
+    sessionStorage.setItem('currentUser', JSON.stringify(currentUser));
   }
 
   render(){

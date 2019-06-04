@@ -9,7 +9,7 @@ form{
     text-align: left;
     color:white;
     font-size: 20px;
-    width:850px;
+    max-width:850px;
     background-color:hsl(209, 45%, 55%);
     border: solid;
     border-color:hsl(30, 33%, 99%);
