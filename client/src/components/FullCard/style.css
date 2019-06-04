@@ -6,3 +6,13 @@
     margin-left: 0px;
     opacity: 1;
 }
+.profilepic{
+    max-width: 350px;
+    max-height: 350px;
+    position: relative;
+    margin:2px;
+    border-radius: 1px;
+}
+img{
+    text-align: center;
+}

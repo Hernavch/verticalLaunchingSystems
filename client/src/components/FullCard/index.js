@@ -4,7 +4,7 @@ import "./style.css";
 export function CardImage(props) {
   return ( 
    
-    <img img className="card-img-top"style={{ height:200,width:200 }} src={props.image} alt="profile"/>
+    <img className="card-img-top img-fluid profilepic" src={props.image} alt="profile"/>
   
   );
 }
@@ -18,12 +18,22 @@ export function CardHeader(props) {
   
   );
 }
+export function CardHeaderBasic(props) {
+  return ( 
+    <div className="card-body">
+     <h5 className="card-title">{props.title}</h5>
+     <p className="card-text">{props.body}</p>
+   </div>
+  
+  );
+}
 
 export function UlList(props) {
   return ( 
     <ul className="list-group list-group-flush">
-      <li className="list-group-item">Education: {props.item1}</li>
-      <li className="list-group-item">Certifications: {props.item2}</li>
+       <li className="list-group-item">Status: {props.item1}</li>
+      <li className="list-group-item">Education: {props.item2}</li>
+      <li className="list-group-item">Certifications: {props.item3}</li>
   </ul>
   );
 }
