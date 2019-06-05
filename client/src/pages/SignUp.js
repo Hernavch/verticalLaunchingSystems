@@ -4,7 +4,7 @@ import { Col, Row, Container } from "../components/Grid";
 
 import { Input, TextArea, FormBtn, FormTitle } from "../components/Form";
 import API from "../utils/API";
-
+import UserContext from '../utils/UserContext';
 
 class SignUp extends Component {
   state = {

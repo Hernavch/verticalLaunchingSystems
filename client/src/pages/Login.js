@@ -33,11 +33,11 @@ class Login extends Component {
     API.login({email, password})
     .then(res => {
         onLogin(res.data);
-        history.push("/")
+        history.push("/");
     })
     .catch(err => {
       console.log(err)
-      
+
       this.setState({error: err})
     });
   } 

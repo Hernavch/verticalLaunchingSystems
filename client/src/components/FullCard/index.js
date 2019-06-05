@@ -1,6 +1,7 @@
 import React from "react";
 import DeleteBtn from "../DeleteBtn";
-import CheckBtn from "../CheckBtn"
+import CheckBtn from "../CheckBtn";
+import { Link } from "react-router-dom";
 
 import "./style.css";
 
@@ -16,6 +17,12 @@ export function CardHeader(props) {
   return ( 
     <div className="card-body">
      <h5 className="card-title titleCard">{props.title}</h5>
+     <h4 className="card-title titleCard">{props.title1}</h4>
+     <h3 className="card-title titleCard">{props.title2}</h3>
+     <a href={props.Url} className="card-link">{props.Url}</a>
+
+     <h3 className="card-title titleCard">{props.title3}</h3>
+
      <p className="card-text">{props.body}</p>
    </div>
   

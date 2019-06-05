@@ -62,31 +62,6 @@ module.exports = {
        })
        .catch(err => res.status(422).json(err));
       },
-  // findUser: function(req, res) {
-  //     const token = req.header("Authorization");
-  //     let bearer="";
-  //     console.log(token);
-  //      if(token){
-  //      bearer =token.replace("Bearer ", "")
-  //      }else{
-  //       return res.status(404).json({
-  //         error:"Authorization required 1"
-  //        })
-  //       }
-
-  //       jwt.verify(bearer,process.env.SECRET_KEY, function(err, decoded){
-  //         if (err){
-  //            return res.status(403).json({
-  //              error:"Authorization required"
-  //            });
-  //         }else{
-  //           console.log(decoded)
-  //         }
-             
-  //       });
-
-  // },
-  
   hello:function(req,res){
    res.json("Hello!");
   },
@@ -96,24 +71,5 @@ module.exports = {
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
       console.log("found");
-  },
-  create: function(req, res) {
-    db.User
-      .create(req.body)
-      .then(dbModel => res.json(dbModel))
-      .catch(err => res.status(422).json(err));
-  },
-  update: function(req, res) {
-    db.User
-      .findOneAndUpdate({ _id: req.params.id }, req.body)
-      .then(dbModel => res.json(dbModel))
-      .catch(err => res.status(422).json(err));
-  },
-  remove: function(req, res) {
-    db.User
-      .findById({ _id: req.params.id })
-      .then(dbModel => dbModel.remove())
-      .then(dbModel => res.json(dbModel))
-      .catch(err => res.status(422).json(err));
   }
 };

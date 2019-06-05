@@ -21,7 +21,11 @@ class Users extends Component {
     skill1:"SQL",
     skill2:"Technical Writing",
     skill3:"Critical Thinking",
-    jobsearch:""
+    jobsearch:"",
+    jobTitle:"",
+    jobCompany:"",
+    jobUrl:"",
+    jobLocation:""
 
   };
 componentDidMount(){
@@ -31,12 +35,18 @@ onChange = key => e => this.setState({ [key]: e.target.value });
 
 handleJobSearch = (event, res) => {
   event.preventDefault();
-  // API.getJobs(this.state.jobsearch)
-  // .then(res=>(console.log(res.data)
-  // ))
-  // .catch(err => {
-  //   this.setState({error: err.response.data.error})
-  // });
+  API.getjobs(this.state.jobsearch)
+  .then(res=> 
+    // console.log(res.data.jobTitle) 
+    this.setState({
+      jobTitle: res.data.jobTitle,
+      jobCompany:res.data.company,
+      jobUrl: res.data.jobUrl,
+      jobLocation:res.data.location})
+  )
+  .catch(err => {
+    this.setState({error: err.response.data.error})
+  });
 };
 handleChange = event => {
   const {name, value} = event.target;
@@ -97,7 +107,8 @@ handleChange = event => {
                   placeholder="Software Developer"
                 />
                 <FormBtn
-                  // onClick={this.handleJobSearch}
+                  onClick={this.handleJobSearch}
+                  // onClick={(event) => this.jobsearch(event, getjobs)}
                 >
                   Search Jobs
                 </FormBtn>
@@ -107,7 +118,11 @@ handleChange = event => {
               <br/>
               <Card>
               <CardHeader
-               title= "Find Career"
+               title= {this.state.jobTitle}
+               title1= {this.state.jobCompany}
+               href= {this.state.jobUrl}
+               Url={this.state.jobUrl}
+               title3= {this.state.jobLocation}
                />
               </Card>
               

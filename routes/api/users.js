@@ -6,13 +6,11 @@ const isAuthenticated = require("../../controllers/authentication");
 
 // Matches with "/api/users"
 router.route('/login')
-.post(usersController.login)
+.post(usersController.login);
 
 router.route('/signup')
 .post(usersController.signUp);
 // router.route('auth/google/callback');
 
-router.route('/')
-.get(isAuthenticated, usersController.hello);
 
 module.exports = router;
