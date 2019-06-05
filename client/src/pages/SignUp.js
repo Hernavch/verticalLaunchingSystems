@@ -21,7 +21,7 @@ class SignUp extends Component {
 
      API.signUp(this.state)
       .then(res => history.push("/login") )
-      .catch (err =>  res.status(422).json(err));
+      .catch (err =>  console.log(err));
   };
   onChange = key => e => this.setState({ [key]: e.target.value });
 
