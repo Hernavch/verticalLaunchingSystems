@@ -7,6 +7,7 @@ router.route('/details')
 .get(careerController.details);
 
 router.route('/getjobs')
-.get(jobController.getjobs);
+.get(jobController.getjobs)
+.post(jobController.getjobs);
 
 module.exports = router;

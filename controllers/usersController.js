@@ -7,10 +7,6 @@ require('dotenv').config()
 
 // Defining methods for the usersController
 module.exports = {
-  validate: function(req, res){
-    console.log(token);
-    // jwt.verify()
-  },
   signUp: function(req, res) {
     bcrypt.hash(req.body.password, saltRounds, function(err,hash){
       if(err){

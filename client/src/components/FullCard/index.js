@@ -27,6 +27,22 @@ export function CardHeader(props) {
    </div>
   
   );
+  
+}
+export function CardHeaderJobs(props) {
+  return ( 
+    <div className="card-body">
+      <CheckBtn/>
+     <p className="card-title jobz">Recomended Job: <h2>{props.title}</h2></p>
+     <p className="card-title jobz">Company: <h4>{props.title1}</h4></p>
+     <p className="card-title jobz">Job Location: <h6>{props.title2}</h6></p>
+     <h5 className="card-title jobz">{props.title3}</h5>
+     <a href={props.Url} className="card-link">{props.Url}</a>
+
+     <p className="card-text">{props.body}</p>
+   </div>
+  
+  );
 }
 export function CardHeaderBasic(props) {
   return ( 

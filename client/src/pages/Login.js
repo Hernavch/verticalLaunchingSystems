@@ -36,7 +36,7 @@ class Login extends Component {
         history.push("/");
     })
     .catch(err => {
-      console.log(err)
+      console.log("login",err)
 
       this.setState({error: err})
     });

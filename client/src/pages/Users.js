@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import DeleteBtn from "../components/DeleteBtn";
 import { Link } from "react-router-dom";
 import Jumbotron from "../components/Jumbotron";
-import {CardImage, CardBody, CardHeader, UlList, CardHeaderBasic, UlListSkill, UlListBasic} from "../components/FullCard";
+import {CardImage, CardBody, CardHeader, UlList, CardHeaderJobs, UlListSkill, UlListBasic} from "../components/FullCard";
 import Card from "../components/Card";
 import API from "../utils/API";
 import UserContext from '../utils/UserContext';
@@ -22,6 +22,7 @@ class Users extends Component {
     skill2:"Technical Writing",
     skill3:"Critical Thinking",
     jobsearch:"",
+    searchJobs:"false",
     jobTitle:"",
     jobCompany:"",
     jobUrl:"",
@@ -35,15 +36,16 @@ onChange = key => e => this.setState({ [key]: e.target.value });
 
 handleJobSearch = (event, res) => {
   event.preventDefault();
-  API.getjobs(this.state.jobsearch)
-  .then(res=> 
-    // console.log(res.data.jobTitle) 
-    this.setState({
+  API.getjobs({jobsearch:this.state.jobsearch}) 
+  .then(res=> {
+    // console.log(res.data.jobTitle)
+     this.setState({
       jobTitle: res.data.jobTitle,
       jobCompany:res.data.company,
       jobUrl: res.data.jobUrl,
-      jobLocation:res.data.location})
-  )
+      jobLocation:res.data.location,
+      searchJobs:true})
+    })
   .catch(err => {
     this.setState({error: err.response.data.error})
   });
@@ -79,7 +81,6 @@ handleChange = event => {
                />
                 <CardBody/>
               </Card>
-           <br/>
               <UlList
                 item1= {this.state.item1}
                 item2= {this.state.item2}
@@ -107,8 +108,8 @@ handleChange = event => {
                   placeholder="Software Developer"
                 />
                 <FormBtn
-                  onClick={this.handleJobSearch}
-                  // onClick={(event) => this.jobsearch(event, getjobs)}
+                  // onClick={this.handleJobSearch}
+                  onClick={(event) => this.handleJobSearch(event)}
                 >
                   Search Jobs
                 </FormBtn>
@@ -117,18 +118,18 @@ handleChange = event => {
               </Card>
               <br/>
               <Card>
-              <CardHeader
+              <CardHeaderJobs
                title= {this.state.jobTitle}
                title1= {this.state.jobCompany}
                href= {this.state.jobUrl}
                Url={this.state.jobUrl}
-               title3= {this.state.jobLocation}
+               title2= {this.state.jobLocation}
                />
               </Card>
               
             </Col>
             <Col size="md-3 sm-12" >
-            <Card>
+              <Card>
               <br/>
             <CardHeader
                title= "Hired Checklist"
@@ -140,15 +141,14 @@ handleChange = event => {
                 />
                  </Card>
             
-            <Card>
-            <CardHeader
-               title= "Add to Checklist"
-               />
+              <Card>
+                <CardHeader
+                  title= "Add to Checklist"
+                  />
                 <UlListBasic
-                item1="Submit Resume"
-                
-                />
-                 </Card>
+                  item1="Submit Resume"
+                 />
+              </Card>
             </Col>
         </Row>    
         ):(

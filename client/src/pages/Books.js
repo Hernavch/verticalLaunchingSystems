@@ -27,13 +27,13 @@ class Books extends Component {
       .then(res =>
         this.setState({ books: res.data, title: "", author: "", synopsis: "" })
       )
-      .catch(err => console.log(err));
+      .catch(err => console.log("books",err));
   };
 
   deleteBook = id => {
     API.deleteBook(id)
       .then(res => this.loadBooks())
-      .catch(err => console.log(err));
+      .catch(err => console.log("books",err));
   };
 
   handleInputChange = event => {
