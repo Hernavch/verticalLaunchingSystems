@@ -31,7 +31,7 @@ class Login extends Component {
     const {email, password} = this.state;
 
     API.login({email, password})
-    .then(res => {
+       .then(res => {
         onLogin(res.data);
         history.push("/");
     })
@@ -79,6 +79,12 @@ class Login extends Component {
                  </FormBtn>
 
                     </form>
+                    { error && (
+                    <div className="alert">
+                      {error}
+                    </div>
+            )}
+
               
           </Col>
         </Row>
