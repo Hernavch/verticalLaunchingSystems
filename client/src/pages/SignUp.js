@@ -84,6 +84,7 @@ class SignUp extends Component {
             
           </Col>
           <Col size="md-4">
+            <br/>
           <Link to="/login" className="banner-jumbo">
               <FormBtn>
                   <h5>Already a user?</h5>

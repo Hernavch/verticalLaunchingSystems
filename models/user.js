@@ -3,17 +3,21 @@ const Schema = mongoose.Schema;
 
 const userSchema = new Schema({
   firstName:{ type: String,
-               required: true
+               required: true,
+               lowercase: true
                },
   lastName:{ type: String, 
-              required: true 
+              required: true,
+              lowercase: true 
             },
   username:{ type: String, 
              required: true, 
+             lowercase: true,
              unique: true 
             },
   zip:{ type: String},
   email:{type:String, 
+    lowercase: true,
         unique:true,
            match:[/.+@.+\..+/, "Please enter a valid e-mail address"]
         }, 

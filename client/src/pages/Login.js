@@ -95,6 +95,7 @@ class Login extends Component {
         </Row>
         <Row>
           <Col size="md-4">
+            <br/>
           <Link to="/signup" className="banner-jumbo">
               <FormBtn>
                   <h5>New to VLS?</h5>

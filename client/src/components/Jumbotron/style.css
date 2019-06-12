@@ -1,5 +1,16 @@
 .jumbotron{
-    background-color:rgb(252, 252, 252);
+    background-color:orange;
     opacity:.8;
+    /* text-align: left; */
 }
-
+.jumboheader{
+    text-align: left;
+    position: relative;
+    bottom:150px;
+}
+.jumbosubhead{
+    margin-left: 20px;
+    text-align: center;
+    position: relative;
+    bottom:120px;
+}

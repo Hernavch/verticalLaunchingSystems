@@ -152,23 +152,38 @@ handleChange = event => {
             </Col>
         </Row>    
         ):(
+          <Row>
           <Col size="md-8 sm-12">
-          <Jumbotron> 
+            <br/>
+            <br/>
+          <Jumbotron>
+            <h1 class="headerOne jumboheader italic">VLS</h1> 
+            <h2 class="headerOne jumboheader">Vertical Launching Systems</h2>
+            
+            <h3 class="headerOne jumbosubhead"> Home User Page directs you to the most important component of the job hunt...YOU!</h3>
+            <h3 class="headerOne jumbosubhead" > Set Goals visually indicate the progress you’ve made with a checkmark.</h3>  
+      
+            <h2 class="headerOne">Find Jobs Search active job openings! </h2>
+          </Jumbotron>
+          </Col>
+          <Col size="md-4 sm-12">
+          <br/>
+          <br/>
             <Link to="/login" className="banner-jumbo">
                <FormBtn>
                   <h5>Already a user?</h5>
                     <h6>Login</h6>
                 </FormBtn>
             </Link>
-                <br/>
+              <br/>
             <Link to="/signup" className="banner-jumbo">
               <FormBtn>
                   <h5>New to VLS?</h5>
                     <h6>Sign Up</h6>
               </FormBtn>
             </Link>
-          </Jumbotron>
-        </Col>
+          </Col>
+        </Row>
         )}
         
       </UserContainer>
