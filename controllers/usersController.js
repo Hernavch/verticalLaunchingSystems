@@ -21,6 +21,7 @@ module.exports = {
        }
              
       db.User
+      
       .create(user)
       .then(data => console.log(data, "then data"))
       .catch(err => res.status(422).json(err))
@@ -47,10 +48,10 @@ module.exports = {
               username: dbModel.username,
               id: dbModel._id})
             
-           } else {
+           } else if(dbModel=== null){
              console.log("No Match")
              return res.status(404).json({
-               error:"Password Username Incorrect"
+               error:"Password/Username Incorrect"
                
              })
            }

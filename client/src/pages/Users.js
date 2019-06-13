@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import Jumbotron from "../components/Jumbotron";
 import {CardImage, CardBody, CardHeader, UlList, CardHeaderJobs, UlListSkill, UlListBasic} from "../components/FullCard";
 import Card from "../components/Card";
+import { Progress } from 'reactstrap';
 import API from "../utils/API";
 import UserContext from '../utils/UserContext';
 import { Col, Row, Container, UserContainer } from "../components/Grid";
@@ -15,8 +16,8 @@ class Users extends Component {
   state = {
     username:"",
     image:"https://dcp.org/wp-content/uploads/2018/11/person-placeholder-e1543539209738.jpg",
-    item1: "Student",
-    item2: "Bachelors",
+    status: "Career Turner",
+    education: "Bachelors",
     item3:"A++",
     skill1:"SQL",
     skill2:"Technical Writing",
@@ -39,6 +40,7 @@ handleJobSearch = (event, res) => {
   API.getjobs({jobsearch:this.state.jobsearch}) 
   .then(res=> {
     // console.log(res.data.jobTitle)
+    
      this.setState({
       jobTitle: res.data.jobTitle,
       jobCompany:res.data.company,
@@ -56,8 +58,7 @@ handleChange = event => {
     [name]: value
   });
   }
-
-  render() {
+   render() {
 
 
     return (
@@ -70,9 +71,10 @@ handleChange = event => {
         
         {user ?(
           <Row>
+            <br/>
            <Col size="md-3 .d-sm-block ml-10">
               <Card> 
-               <h1> Welcome {user.name} </h1>
+               <h1> Welcome {user.name} ! </h1>
                <CardImage
                  image={this.state.image}
                />
@@ -82,8 +84,8 @@ handleChange = event => {
                 <CardBody/>
               </Card>
               <UlList
-                item1= {this.state.item1}
-                item2= {this.state.item2}
+                item1= {this.state.status}
+                item2= {this.state.education}
                 item3= {this.state.item3}>
               </UlList>
             
@@ -94,10 +96,13 @@ handleChange = event => {
                 />
                 
             </Col>
+            <br/>
             <Col size="md-6 sm-12" >
               <Card>
+              <Progress bar color="success" value="30" />
               <CardHeader
                title= "Find Jobs"
+               
                />
                <form>
                <Input
@@ -118,6 +123,7 @@ handleChange = event => {
               </Card>
               <br/>
               <Card>
+             
               <CardHeaderJobs
                title= {this.state.jobTitle}
                title1= {this.state.jobCompany}
@@ -128,6 +134,7 @@ handleChange = event => {
               </Card>
               
             </Col>
+            <br/>
             <Col size="md-3 sm-12" >
               <Card>
               <br/>

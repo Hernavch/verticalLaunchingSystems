@@ -6,9 +6,18 @@ import "./style.css";
 function CheckBtn(props) {
   return (
     <span className="add-btn" {...props} role="button" tabIndex="0">
-      ✓
+      <button>✓</button>
     </span>
   );
 }
 
 export default CheckBtn;
+
+export function Checkmrk(props) {
+  return (
+    <span className="add-btn" {...props} role="button" tabIndex="0">
+      ✓
+    </span>
+  );
+
+}

@@ -29,6 +29,14 @@ const userSchema = new Schema({
              },
     "Password needs to be at least 6 characters"
   ] },
+  profileImg:{type:String},
+  education:{type:String},
+  status:{type:String},
+  certifications: {type:String},
+  skill1:{type:String},
+  skill2:{type:String},
+  skill3:{type:String},
+
   intrests:[],
   date: { type: Date, default: Date.now }
 });

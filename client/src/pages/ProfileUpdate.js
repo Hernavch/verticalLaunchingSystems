@@ -44,6 +44,15 @@ class ProfileUpdate extends Component {
           <Col size="md-12">
           <form>
             <h1 className="headerOne">Update Profile</h1>
+              
+            <Selectbtn
+              label="Career Stage"
+              optionOne="Career Learner"
+              optionTwo="Career Turner"
+              optionThree="Career Explorer"
+              optionFour="Career Master"
+              optionFive="Find JOB Now"
+              />
               <Input
                 label="Interests"
                 value={this.state.intrests}
@@ -52,23 +61,20 @@ class ProfileUpdate extends Component {
                 placeholder="Software Developer"
               />
               <Input
-                label="Education"
-                value={this.state.education}
-                onChange={this.onChange('education')}
-                name="education"
-                placeholder="Bachelors"
-               />
-                <RadioBtn
-                label="option one"
-                value="true" 
-                />
-                <RadioBtn
-                label="option two"
-                value="true"/>
-                <RadioBtn 
-                label="option three"
-                value="true"/>
-               
+                label="Profile Image"
+                value={this.state.profileImage}
+                onChange={this.onChange('profileImage')}
+                name="profileImage"
+                placeholder="Picture URL"
+              />
+              <Selectbtn
+              label="Education"
+              optionOne="High School"
+              optionTwo="Associates"
+              optionThree="Bachelors"
+              optionFour="Masters"
+              optionFive="Doctorate"/>
+              
               <Input
                 label="Certifications"
                 value={this.state.certifications}
@@ -84,10 +90,7 @@ class ProfileUpdate extends Component {
                 name="skills"
                 placeholder="skills"
               />
-              <Selectbtn
-              label="Question Drop down"
-              optionOne="More Options"
-              optionTwo="Other"/>
+              
               <FormBtn
                 // disabled={!(this.state.firstName && this.state.lastName && this.state.email && this.state.password)}
                 onClick={this.handleFormSubmit}

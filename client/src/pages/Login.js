@@ -35,13 +35,12 @@ class Login extends Component {
         onLogin(res.data);
         history.push("/");
     })
-    .catch(err => {
-      console.log("login",err)
-
-      this.setState({error: err})
+    .catch(error => {
+        this.setState({error: "Invalid Username and password"});
+        console.log("Invalid Username and password",error)
     });
   } 
-
+ 
 
   render() {
    const {email, password, error} = this.state;
@@ -80,7 +79,7 @@ class Login extends Component {
 
                     </form>
                     { error && (
-                    <div className="alert">
+                    <div className="error-alert">
                       {error}
                     </div>
             )}

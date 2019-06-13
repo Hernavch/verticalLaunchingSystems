@@ -1,6 +1,6 @@
 import React from "react";
 import DeleteBtn from "../DeleteBtn";
-import CheckBtn from "../CheckBtn";
+import CheckBtn, { Checkmrk } from "../CheckBtn";
 import { Link } from "react-router-dom";
 
 import "./style.css";
@@ -32,7 +32,7 @@ export function CardHeader(props) {
 export function CardHeaderJobs(props) {
   return ( 
     <div className="card-body">
-      <CheckBtn/>
+      <Checkmrk/>
      <p className="card-title jobz">Recomended Job: <h2>{props.title}</h2></p>
      <p className="card-title jobz">Company: <h4>{props.title1}</h4></p>
      <p className="card-title jobz">Job Location: <h6>{props.title2}</h6></p>

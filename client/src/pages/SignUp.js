@@ -13,6 +13,7 @@ class SignUp extends Component {
     username:'',
     email:'',
     password:'',
+    error:''
      
   };
   handleSignup = (event, res) => {
@@ -21,7 +22,10 @@ class SignUp extends Component {
 
      API.signUp(this.state)
       .then(res => history.push("/login") )
-      .catch (err =>  console.log("signup",err));
+      .catch (error =>{  
+        this.setState({error: "Email/Username already taken "});
+        console.log("signup",error)
+      });
   };
   onChange = key => e => this.setState({ [key]: e.target.value });
 
@@ -81,7 +85,11 @@ class SignUp extends Component {
                 </FormBtn>
                 {/* <Button color="danger">Danger!</Button> */}
               </form>
-            
+              { this.state.error && (
+                    <div className="error-alert">
+                      {this.state.error}
+                    </div>
+              )}
           </Col>
           <Col size="md-4">
             <br/>

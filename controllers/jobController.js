@@ -24,10 +24,10 @@ module.exports = {
           location:jobList.Location,
         };
         // console.log(jobPost)
-        res.json(jobPost); 
+        // res.json(jobPost); 
 
       }
-      // res.json(jobPost); 
+      res.json(jobPost); 
 
       })
       .catch(function(error) {
@@ -46,7 +46,7 @@ module.exports = {
           // Something happened in setting up the request that triggered an Error
           console.log("Error jobs", error.message);
         }
-        console.log(error.config);
+        // console.log("something",error.config);
       });
  
     },

@@ -25,7 +25,7 @@ module.exports = {
       var occVideo =response.data.OccupationDetail[0].Video;
     
       console.log(response.data);
-    
+      res.json(occDetail);
     // console.log(occPage);
     // console.log(occVideo);
     

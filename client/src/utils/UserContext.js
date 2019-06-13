@@ -15,6 +15,10 @@ export class UserProvider extends React.Component {
     sessionStorage.setItem('currentUser', JSON.stringify(currentUser));
   }
 
+  onLogOut = (onLogOut) =>{
+    this.setState({initalUser});
+  }
+
   render(){
     return (
       <Context.Provider value={{
